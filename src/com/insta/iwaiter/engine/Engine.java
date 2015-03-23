@@ -1,7 +1,8 @@
 package com.insta.iwaiter.engine;
 
-import com.insta.iwaiter.data.Data;
 import com.insta.iwaiter.services.BrainService;
+import com.insta.iwaiter.services.DataService;
+import com.insta.iwaiter.services.EngineService;
 import com.insta.iwaiter.tools.SimParameters;
 import com.insta.iwaiter.tools.Position;
 import com.insta.iwaiter.userinterface.Viewer;
@@ -15,11 +16,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
-public class Engine {
-	//	private enum USERCOMMAND { LEFT, RIGHT, UP, DOWN, NONE};
-	//	private USERCOMMAND command;
+public class Engine implements EngineService {
 
-	private Data data;
+	private DataService data;
 	private Viewer viewer;
 	private BrainService brain;
 	
@@ -39,21 +38,22 @@ public class Engine {
 		botEngine = new Timeline();
 	}
 	
-	public void bindData(Data d) {
+	@Override
+	public void bindData(DataService d) {
 		data = d;
 	}
-	
+
+	@Override
 	public void bindViewer(Viewer v) {
 		viewer = v;
 	}
-	
+
+	@Override
 	public void bindBrainService(BrainService b) {
 		brain = b;
 	}
 
-	/** 
-	 * stimulate robot movement with brain service
-	 * **/
+	@Override
 	public void start() {
 		reset();
 		brain.activation();
@@ -150,6 +150,7 @@ public class Engine {
 		botEngine.play();
 	}
 	
+	@Override
 	public void stop() {
 		botEngine.getKeyFrames().clear();
 		botEngine.stop();
@@ -176,21 +177,25 @@ public class Engine {
 		setPlayed(false);
 	}
 	
+	@Override
 	public void moveLeft(){
 		viewer.getRobotAvatar().setImage(viewer.getRobotLeft().get(++imgIndex%3));
 		data.setBotPosition(new Position(data.getBotPosition().x-5, data.getBotPosition().y));
 	}
 
+	@Override
 	public void moveRight(){
 		viewer.getRobotAvatar().setImage(viewer.getRobotRight().get(++imgIndex%3));
 		data.setBotPosition(new Position(data.getBotPosition().x+5, data.getBotPosition().y));
 	}
 
+	@Override
 	public void moveUp(){
 		viewer.getRobotAvatar().setImage(viewer.getRobotUp().get(++imgIndex%3));
 		data.setBotPosition(new Position(data.getBotPosition().x, data.getBotPosition().y-5));
 	}
 
+	@Override
 	public void moveDown(){
 		viewer.getRobotAvatar().setImage(viewer.getRobotDown().get(++imgIndex%3));
 		data.setBotPosition(new Position(data.getBotPosition().x, data.getBotPosition().y+5));

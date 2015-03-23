@@ -5,9 +5,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.insta.iwaiter.data.Data;
 import com.insta.iwaiter.engine.Engine;
 import com.insta.iwaiter.services.BrainService;
+import com.insta.iwaiter.services.DataService;
+import com.insta.iwaiter.services.ViewerService;
 import com.insta.iwaiter.tools.FileLoader;
 import com.insta.iwaiter.tools.SimParameters;
 
@@ -44,9 +45,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Viewer {
+public class Viewer implements ViewerService {
 
-	private Data data;
+	private DataService data;
 	private Engine engine;
 	private FileLoader fileLoader;
 
@@ -57,7 +58,7 @@ public class Viewer {
 	private Image tableImg = new Image(srcUrl + "/images/table.png");
 	private Image tableFamilyImg = new Image(srcUrl + "/images/table-familliale.png");
 
-	private String bombFile = new File("src/media/bomb.mp3").toURI().toString();
+	private String bombFile = new File("src/media/explosion.mp3").toURI().toString();
 	private Media bombMedia;
 	private MediaPlayer bombPlayer;
 
@@ -139,14 +140,17 @@ public class Viewer {
 		initializeViewer();
 	}
 
-	public void bindData(Data d) {
+	@Override
+	public void bindData(DataService d) {
 		data = d;
 	}
 
+	@Override
 	public void bindEngine(Engine e) {
 		engine = e;
 	}
 
+	@Override
 	public void initializeViewer() {
 		// Create list of brain files
 		fileLoader = new FileLoader();
@@ -315,7 +319,10 @@ public class Viewer {
 		return vbox;
 	}
 
-	/** Refresh every millisecond by Main -> AnimationTimer **/
+	/* 
+	 * Refresh every millisecond by Main -> AnimationTimer
+	 */
+	@Override
 	public Parent getPanel() {
 		// Get robotAvatar ImageView from root panel and set it's new position
 		rootPanel.getChildren().get(3).setTranslateX(data.getBotPosition().x);

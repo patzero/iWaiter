@@ -12,6 +12,8 @@ import java.net.URL;
 import com.insta.iwaiter.AI.WaiterBrain;
 import com.insta.iwaiter.data.Data;
 import com.insta.iwaiter.engine.Engine;
+import com.insta.iwaiter.services.DataService;
+import com.insta.iwaiter.services.ViewerService;
 import com.insta.iwaiter.userinterface.Viewer;
 
 import javafx.animation.AnimationTimer;
@@ -25,7 +27,7 @@ public class Main  extends Application {
 
 	private static Viewer viewer;
 	private static Engine engine;
-	private static Data data;
+	private static DataService data;
 	private static AnimationTimer timer;
 
 	public static void main(String[] args) {
@@ -43,7 +45,6 @@ public class Main  extends Application {
 
 		viewer.bindData(data);
 		viewer.bindEngine(engine);
-		
 		
 		String Nom = new File("bomb.mp3").toURI().toString();
 		System.out.println(Nom);
@@ -68,7 +69,7 @@ public class Main  extends Application {
 		timer = new AnimationTimer() {
 			@Override
 			public void handle(long l) {
-				scene.setRoot(((Viewer)viewer).getPanel());
+				scene.setRoot(((ViewerService)viewer).getPanel());
 			}
 		};
 		timer.start();
