@@ -9,8 +9,7 @@ public class WaiterBrain implements BrainService {
 	private Engine simulator;
 	private int step;
 
-	public WaiterBrain() {
-	}
+	public WaiterBrain() {}
 
 	@Override
 	public void bindSimulatorService(Engine engine) {
