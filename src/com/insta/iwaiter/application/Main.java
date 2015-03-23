@@ -4,12 +4,6 @@
  * ******************************************************/
 package com.insta.iwaiter.application;
 
-
-
-import java.io.File;
-import java.net.URL;
-
-import com.insta.iwaiter.AI.WaiterBrain;
 import com.insta.iwaiter.data.Data;
 import com.insta.iwaiter.engine.Engine;
 import com.insta.iwaiter.services.DataService;
@@ -45,9 +39,6 @@ public class Main  extends Application {
 
 		viewer.bindData(data);
 		viewer.bindEngine(engine);
-		
-		String Nom = new File("bomb.mp3").toURI().toString();
-		System.out.println(Nom);
 		
 		Scene scene = new Scene(viewer.getPanel());
 		

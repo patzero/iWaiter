@@ -1,7 +1,6 @@
 package com.insta.iwaiter.userinterface;
 
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -313,7 +312,7 @@ public class Viewer implements ViewerService {
 		vbox.getChildren().addAll(
 				new Text(" Keyboard:"), 
 				new Text(" spacebar : play / pause"),
-				new Text(" o        : show obstacles layer"));   
+				new Text(" o : show obstacles layer"));   
 		hbox.getChildren().addAll(new Separator(Orientation.VERTICAL), vbox); 
 
 		return vbox;
@@ -408,7 +407,6 @@ public class Viewer implements ViewerService {
 		bombPlayer = new MediaPlayer(bombMedia);
 		bombPlayer.play();
 	}
-
 
 	public ImageView getRobotAvatar() {
 		return robotAvatar;
