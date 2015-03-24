@@ -41,6 +41,7 @@ public class Main  extends Application {
 		viewer.bindEngine(engine);
 		
 		Scene scene = new Scene(viewer.getPanel());
+		scene.getStylesheets().add(getClass().getResource("/stylesheet/application.css").toExternalForm());
 		
 		stage.setScene(scene);
 		stage.setOnShown(new EventHandler<WindowEvent>() {

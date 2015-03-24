@@ -5,18 +5,8 @@
   -fx-border-width: 1;
   -fx-border-color: #038fcb;
   -fx-text-fill: #fff;
-  -fx-font-size: 35px;
-  -fx-padding: 0 0 0 0;
-}
-
-#play{
   -fx-padding: 5 0 5 0;
   -fx-font-size: 20px;
-}
-
-#start_button{
-  -fx-font-size: 15px;
-  -fx-padding: 5;
 }
 
 .simulator-button:hover{
@@ -27,5 +17,11 @@
 }
 
 #select{
-  -fx-max-width: 140px;
+  -fx-padding: 10;
+}
+
+#vertical-container{
+	-fx-border-style: solid;
+	-fx-border-width: 1;
+	-fx-border-color: black;
 }
