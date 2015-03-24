@@ -246,7 +246,13 @@ public class Viewer implements ViewerService {
 				+ "-fx-border-color: black");
 
 		ComboBox<String> combobox = new ComboBox<String>();
-		combobox.setValue("Choose Robot Brain");
+		combobox.setId("select");
+		combobox.setStyle("-fx-padding: 10;");
+		combobox.setLayoutX(5);
+		combobox.setLayoutX(45);
+		//.add(getClass().getResource("/stylesheet/application.css").toExternalForm());
+		System.out.println(getClass().getResource("/stylesheet/application.css"));
+		combobox.setPromptText("Choose Robot Brain");
 		// Add brain file name to combobox list
 		for (String fileName : fileLoader.getFileNames()) {
 			combobox.getItems().add(fileName);
@@ -256,7 +262,27 @@ public class Viewer implements ViewerService {
 		playButton.setDisable(true);
 		Button stopButton = new Button("Stop");
 		stopButton.setDisable(true);
-
+		playButton.setStyle("-fx-background-color: #03a1e4;" 
+                + "-fx-background-radius: 0px;"
+                + "-fx-border-width: 1;"
+                + "-fx-border-color: #038fcb;"
+                + "-fx-text-fill: #fff;"
+                + "-fx-font-size: 15px;"
+                + "-fx-padding: 10 40 10 40;");
+		playButton.setTranslateX(6);
+		playButton.setTranslateY(60);
+		stopButton.setStyle("-fx-background-color: #03a1e4;" 
+                + "-fx-background-radius: 0px;"
+                + "-fx-border-width: 1;"
+                + "-fx-border-color: #038fcb;"
+                + "-fx-text-fill: #fff;"
+                + "-fx-font-size: 15px;"
+                + "-fx-padding: 10 40 10 40;");
+		stopButton.setTranslateX(6);
+		stopButton.setTranslateY(80);
+		stopButton.setPrefWidth(120);
+		playButton.setPrefWidth(120);
+		    
 		playButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent event) {

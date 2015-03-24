@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+.simulator-button{
+  -fx-background-color: #03a1e4;
+  -fx-background-radius: 0px;
+  -fx-border-width: 1;
+  -fx-border-color: #038fcb;
+  -fx-text-fill: #fff;
+  -fx-font-size: 35px;
+  -fx-padding: 0 0 0 0;
+}
+
+#play{
+  -fx-padding: 5 0 5 0;
+  -fx-font-size: 20px;
+}
+
+#start_button{
+  -fx-font-size: 15px;
+  -fx-padding: 5;
+}
+
+.simulator-button:hover{
+  -fx-border-color: #026c98;
+}
+.simulator-button:pressed{
+  -fx-background-color: #1592c3;
+}
+
+#select{
+  -fx-max-width: 140px;
+}
