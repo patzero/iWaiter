@@ -12,6 +12,7 @@ import com.insta.iwaiter.services.ViewerService;
 import com.insta.iwaiter.tools.FileLoader;
 import com.insta.iwaiter.tools.SimParameters;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -230,8 +231,27 @@ public class Viewer implements ViewerService {
 		Menu menuFile = new Menu("File");
 		MenuItem exitApp = new MenuItem("Close");
 		menuFile.getItems().addAll(exitApp);
-		Menu menuEdit = new Menu("Help");
-		menuBar.getMenus().addAll(menuFile, menuEdit);
+		exitApp.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+            	Platform.exit();
+            }
+        }); 
+		
+		Menu menuHelp = new Menu("Help");
+		MenuItem menuAbout = new MenuItem("About");
+		menuHelp.getItems().addAll(menuAbout);
+		menuAbout.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+            	Stage dialog = new Stage();
+        		dialog.setWidth(600);
+        		dialog.setHeight(200);
+        		dialog.initStyle(StageStyle.UTILITY);
+        		Scene scene = new Scene(new Group(new Text(50, 50, SimParameters.aboutMsg)));
+        		dialog.setScene(scene);
+        		dialog.show();
+            }
+        });
+		menuBar.getMenus().addAll(menuFile, menuHelp);
 		return menuBar;
 	}
 
@@ -326,9 +346,7 @@ public class Viewer implements ViewerService {
 				+ "-fx-border-color: black");
 
 		vbox.getChildren().addAll(
-				new Text(" Keyboard:"), 
-				new Text(" spacebar : play / pause"),
-				new Text(" o : show obstacles layer"));   
+				new Text(SimParameters.keyBoardMsg));   
 		hbox.getChildren().addAll(new Separator(Orientation.VERTICAL), vbox); 
 
 		return vbox;

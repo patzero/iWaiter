@@ -6,7 +6,6 @@ package com.insta.iwaiter.application;
 
 import com.insta.iwaiter.data.Data;
 import com.insta.iwaiter.engine.Engine;
-import com.insta.iwaiter.services.DataService;
 import com.insta.iwaiter.services.ViewerService;
 import com.insta.iwaiter.userinterface.Viewer;
 
