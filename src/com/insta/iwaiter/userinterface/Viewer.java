@@ -1,5 +1,6 @@
 package com.insta.iwaiter.userinterface;
 
+import java.awt.Cursor;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -255,22 +256,22 @@ public class Viewer implements ViewerService {
 			combobox.getItems().add(fileName);
 		}
 
-		Button playButton = new Button("Start");
+		Button playButton = new Button("Start simulation");
 		playButton.setId("play");
 		playButton.getStyleClass().add("simulator-button");
 		playButton.setDisable(true);
 		
-		Button stopButton = new Button("Stop");
+		Button stopButton = new Button("Stop simulation");
 		stopButton.setDisable(true);
 		stopButton.getStyleClass().add("simulator-button");
 
 		playButton.setTranslateX(6);
 		playButton.setTranslateY(60);
-		playButton.setPrefWidth(120);
+		playButton.setPrefWidth(140);
 		
 		stopButton.setTranslateX(6);
 		stopButton.setTranslateY(80);
-		stopButton.setPrefWidth(120);
+		stopButton.setPrefWidth(140);
 		    
 		playButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
